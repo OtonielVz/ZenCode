@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenCode Utilities | Software Libre y Gratuito</title>
+    <link rel="shortcut icon" href="https://i.ibb.co/MDqmvGxn/logo.png" type="image/x-icon">
+
+    <!-- Tailwind CSS para estilos rápidos y responsivos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Configuración de Tailwind y Estilos Personalizados -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zencode: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#22c55e', // Verde vibrante (green-500)
+                            accentHover: '#16a34a', // Verde más oscuro al pasar el mouse (green-600)
+                            text: '#e2e8f0',
+                            muted: '#94a3b8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            /* Ajustado el fondo para tener tonos más verdes */
+            background-image:
+                radial-gradient(at 0% 0%, hsla(150, 16%, 7%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(120, 39%, 30%, 1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(160, 49%, 30%, 1) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Efecto Cristal (Glassmorphism) */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-card {
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            /* Cambiado el color del borde y la sombra al nuevo verde */
+            border-color: #22c55e;
+            box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Animación suave al cargar */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="font-sans min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo actualizado -->
+                <div class="flex items-center gap-3">
+                    <img src="https://i.ibb.co/MDqmvGxn/logo.png" alt="ZenCode Utilities Logo" class="h-10 w-auto">
+                    <span class="font-bold text-xl tracking-wider text-white hidden sm:block">ZenCode<span
+                            class="text-zencode-accent">Utilities</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#catalogo"
+                            class="hover:text-zencode-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Catálogo</a>
+                        <a href="#nosotros"
+                            class="hover:text-zencode-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Misión</a>
+                        <a href="#contacto"
+                            class="hover:text-zencode-accent px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#donar"
+                        class="bg-zencode-accent hover:bg-zencode-accentHover text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transition-all transform hover:scale-105">
+                        <i class="fa-solid fa-heart mr-2"></i>Apóyanos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">
+                Soluciones Simples <br>
+                <!-- Gradiente ajustado para usar el nuevo color de acento -->
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-zencode-accent to-emerald-400">Sin
+                    Costo. Sin Complicaciones.</span>
+            </h1>
+            <p class="text-xl text-zencode-muted mb-10 max-w-2xl mx-auto">
+                En <strong>ZenCode Utilities</strong> creamos herramientas que hacen tu vida digital más fácil.
+                Todo nuestro software es gratuito y se mantiene gracias a la comunidad.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#catalogo"
+                    class="border border-zencode-accent text-zencode-accent hover:bg-zencode-accent hover:text-white px-8 py-3 rounded-lg font-semibold transition-all">
+                    Ver Aplicaciones
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Buscador -->
+    <section class="px-4 mb-10">
+        <div class="max-w-xl mx-auto relative">
+            <i class="fa-solid fa-search absolute left-4 top-3.5 text-gray-400"></i>
+            <input type="text" id="searchInput" placeholder="Buscar herramienta..."
+                class="w-full glass-panel py-3 pl-12 pr-4 rounded-xl focus:outline-none focus:border-zencode-accent text-white placeholder-gray-500 transition-colors">
+        </div>
+    </section>
+
+    <!-- Catálogo de Apps -->
+    <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold text-white border-l-4 border-zencode-accent pl-4">Nuestras Herramientas</h2>
+            <span id="appCount" class="text-sm text-zencode-muted">Cargando...</span>
+        </div>
+
+        <!-- Grid Container donde se inyectarán las apps -->
+        <div id="appsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- El contenido se genera con JS abajo -->
+        </div>
+
+        <!-- Mensaje si no hay resultados -->
+        <div id="noResults" class="hidden text-center py-20">
+            <i class="fa-regular fa-folder-open text-4xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400">No encontramos aplicaciones con ese nombre.</p>
+        </div>
+    </main>
+
+    <!-- Sección de Apoyo / Donaciones -->
+    <section id="donar" class="bg-gradient-to-b from-transparent to-black/40 py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center glass-panel p-10 rounded-3xl border border-zencode-accent/20">
+            <!-- Icono de PayPal cambiado a verde para consistencia -->
+            <i class="fa-brands fa-paypal text-5xl text-zencode-accent mb-6"></i>
+            <h2 class="text-3xl font-bold text-white mb-4">Mantenemos esto vivo gracias a ti</h2>
+            <p class="text-zencode-muted mb-8 text-lg">
+                No cobramos por nuestro software ni vendemos tus datos. ZenCode Utilities sobrevive 100% gracias a
+                donaciones voluntarias
+                de usuarios que encuentran valor en lo que hacemos. Si una herramienta te sirvió, invítanos un café.
+            </p>
+
+            <!-- Botón de PayPal actualizado a verde -->
+            <a href="https://www.paypal.com/paypalme/otosinh" target="_blank"
+                class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-transform hover:scale-105">
+                <span class="mr-2">Donar con PayPal</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-black/50 border-t border-white/5 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                    <img src="https://i.ibb.co/MDqmvGxn/logo.png" alt="ZenCode Utilities Logo" class="h-6 w-auto">
+                    <h3 class="text-xl font-bold text-white">ZenCode Utilities</h3>
+                </div>
+                <p class="text-sm text-gray-500">Programación simple para problemas complejos.</p>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end">
+                <a href="mailto:tonip5090@gmail.com"
+                    class="flex items-center text-zencode-muted hover:text-white transition-colors mb-2">
+                    <i class="fa-solid fa-envelope mr-2"></i> tonip5090@gmail.com
+                </a>
+                <div class="flex gap-4 mt-2">
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i
+                            class="fa-brands fa-github text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors"><i
+                            class="fa-brands fa-twitter text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-8 text-xs text-gray-600">
+            &copy; 2025 ZenCode Utilities. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT DINÁMICO -->
+    <script>
+        // ==========================================
+        // BASE DE DATOS DE APLICACIONES
+        // ==========================================
+        // Agrega aquí tus nuevas apps. Copia y pega un bloque {} y cambia los datos.
+        const appsData = [
+            {
+                id: 1,
+                name: "Nexus Play",
+                version: "1.0.0",
+                description: "Reproductor multimedia avanzado con soporte para video local (MP4, MKV), audio (MP3), listas IPTV (.m3u) y streaming de YouTube. Incluye Ecualizador de 10 bandas, Modo Inmersivo (Ambilight), Visualizador de Audio y gestión de bibliotecas.",
+                icon: "fa-solid fa-circle-play", // Icono clásico de Play de FontAwesome
+                category: "Multimedia",
+                downloadLink: "#", // Pon aquí el enlace al .exe o .zip en GitHub Releases
+                date: "25-11-2025"
+            },
+            {
+                id: 2,
+                name: "MediaFetch",
+                version: "v1.0.0",
+                description: "Descargador universal de video y audio (YouTube, TikTok, X). Convierte a MP3/MP4 sin anuncios ni límites.",
+                icon: "fa-solid fa-cloud-arrow-down",
+                category: "Multimedia",
+                downloadLink: "https://www.mediafire.com/file/tvy9abq4apjq66d/MediaFetchSetup.exe/file",
+                date: "25-11-2025"
+            },
+            {
+                id: 3,
+                name: "StreamLog",
+                version: "v1.0.0",
+                description: "Marca tus mejores clips en tiempo real. Configura atajos personalizados y genera logs automáticos sin interrumpir tu stream.",
+                icon: "fa-solid fa-clapperboard",
+                category: "Streaming",
+                downloadLink: "https://www.mediafire.com/file/vfreshawhueoqzh/StreamLog+Setup+1.0.0.exe/file",
+                date: "25-11-2025"
+            },
+            // Plantilla para nueva App (Descomenta y rellena):
+            /*
+            {
+                id: 4,
+                name: "Nombre de tu App",
+                version: "v1.0",
+                description: "Descripción corta de lo que hace.",
+                icon: "fa-solid fa-rocket",
+                category: "Utilidad",
+                downloadLink: "https://github.com/...",
+                date: "2023-12-01"
+            },
+            */
+        ];
+
+        // Referencias al DOM
+        const grid = document.getElementById('appsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const countLabel = document.getElementById('appCount');
+        const noResults = document.getElementById('noResults');
+
+        // Función para generar tarjetas HTML
+        function renderApps(apps) {
+            grid.innerHTML = ''; // Limpiar grid
+
+            if (apps.length === 0) {
+                noResults.classList.remove('hidden');
+                countLabel.textContent = `0 aplicaciones encontradas`;
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            countLabel.textContent = `${apps.length} aplicaciones disponibles`;
+
+            apps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel p-6 rounded-2xl app-card flex flex-col h-full border border-white/5';
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="bg-zencode-card p-3 rounded-xl border border-white/10 text-zencode-accent">
+                            <i class="${app.icon} text-2xl"></i>
+                        </div>
+                        <span class="text-xs font-mono bg-black/30 px-2 py-1 rounded text-gray-400 border border-white/5">
+                            ${app.version}
+                        </span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-white mb-2">${app.name}</h3>
+                    <p class="text-zencode-muted text-sm mb-6 flex-grow leading-relaxed">
+                        ${app.description}
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full">
+                                ${app.category}
+                            </span>
+                            <span class="text-xs text-gray-600">
+                                ${app.date}
+                            </span>
+                        </div>
+                        <a href="${app.downloadLink}" target="_blank" 
+                           class="block w-full text-center bg-white/10 hover:bg-zencode-accent hover:text-white text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 border border-white/10">
+                            <i class="fa-solid fa-download mr-2"></i> Descargar
+                        </a>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Lógica de búsqueda
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filteredApps = appsData.filter(app =>
+                app.name.toLowerCase().includes(term) ||
+                app.description.toLowerCase().includes(term) ||
+                app.category.toLowerCase().includes(term)
+            );
+            renderApps(filteredApps);
+        });
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            renderApps(appsData);
+        });
+
+    </script>
+</body>
+
+</html>
